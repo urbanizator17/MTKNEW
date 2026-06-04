@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="МТК - Оптово-розничная продажа топлива по всей России. Качественные нефтепродукты: АИ-92, АИ-95, АИ-100, ДТ Евро-5." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="font" href="/manrope-cyrillic.woff2" type="font/woff2" crossorigin />
+    <link rel="preload" as="font" href="/manrope-latin.woff2" type="font/woff2" crossorigin />
+    <link rel="preload" as="image" href="/1.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/11.jpg" fetchpriority="high" />
+    <title>МТК | Оптово-розничная продажа топлива</title>
+    <meta name="theme-color" content="#dc2626" />
+  </head>
+  <body class="bg-white">
+    <div id="root">
+      <div id="initial-loader" style="position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: white; z-index: 9999; transition: opacity 0.3s ease-out;">
+        <div style="width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #dc2626; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+      </div>
+      <style>
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+      </style>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      window.addEventListener('load', function() {
+        const loader = document.getElementById('initial-loader');
+        if (loader) {
+          loader.style.opacity = '0';
+          setTimeout(function() { loader.remove(); }, 300);
+        }
+      });
+    </script>
+  </body>
+</html>
+
