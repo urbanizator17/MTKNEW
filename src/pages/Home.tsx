@@ -211,13 +211,11 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-transparent z-10 mix-blend-overlay"></div>
               
               {/* Placeholder for the Jerrycan / Gas station image */}
-              <motion.img 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+              <img 
                 src="/MTKDJI.jpg" 
                 alt="Качество топлива МТК" 
                 className="w-full h-full object-cover transform-gpu rounded-[1.5rem] md:rounded-[2rem]"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
               />
             </motion.div>
@@ -287,13 +285,11 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-transparent z-10 mix-blend-overlay"></div>
               
               {/* Placeholder for the Truck image */}
-              <motion.img 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+              <img 
                 src="/opt.png" 
                 alt="Оптовые поставки ГСМ" 
                 className="w-full h-full object-cover transform-gpu rounded-[1.5rem] md:rounded-[2rem]"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
               />
             </motion.div>
@@ -363,13 +359,11 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-transparent z-10 mix-blend-overlay"></div>
               
               {/* Gas station canopy image */}
-              <motion.img 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+              <img 
                 src="/4.jpg" 
                 alt="АЗС МТК" 
                 className="w-full h-full object-cover transform-gpu rounded-[1.5rem] md:rounded-[2rem]"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
               />
             </motion.div>

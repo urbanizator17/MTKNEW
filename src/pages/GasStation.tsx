@@ -321,13 +321,11 @@ export default function GasStation() {
               className="relative aspect-[4/5] md:aspect-square rounded-3xl overflow-hidden transform-gpu will-change-[transform,opacity] shadow-2xl"
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-red-900/10 to-transparent z-10 mix-blend-overlay"></div>
-              <motion.img 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+              <img 
                 src="/4.jpg" 
                 alt="Сервис МТК" 
                 className="w-full h-full object-cover transform-gpu rounded-3xl"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
               />
               
@@ -597,9 +595,7 @@ export default function GasStation() {
               transition={{ duration: 0.8 }}
               className="md:col-span-8 h-[250px] md:h-[450px] rounded-2xl md:rounded-3xl overflow-hidden group relative shadow-xl will-change-transform"
             >
-              <motion.img 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+              <img 
                 src="/1.jpg" 
                 alt="АЗС МТК Вид сверху" 
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 rounded-2xl md:rounded-3xl"
@@ -617,9 +613,7 @@ export default function GasStation() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="md:col-span-4 md:row-span-2 h-[350px] md:h-auto rounded-2xl md:rounded-3xl overflow-hidden group relative shadow-xl will-change-transform"
             >
-              <motion.img 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+              <img 
                 src="/11.jpg" 
                 alt="АЗС МТК Город" 
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 rounded-2xl md:rounded-3xl"
@@ -721,9 +715,7 @@ export default function GasStation() {
               >
                 {/* Image Container */}
                 <div className="relative h-56 md:h-64 overflow-hidden">
-                  <motion.img 
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+                  <img 
                     src={loc.img} 
                     alt={loc.address}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-t-3xl"

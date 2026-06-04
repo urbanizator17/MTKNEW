@@ -340,13 +340,11 @@ export default function Wholesale() {
             className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-[2rem] md:rounded-[3rem] overflow-hidden relative group shadow-2xl transform-gpu will-change-opacity"
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
-            <motion.img 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+            <img 
               src="/imagen-4.0-generate-001_a_fuel_nozzles_at_gas_.png" 
               alt="Нефтедобывающая платформа" 
               className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[2s] ease-out rounded-[2rem] md:rounded-[3rem] transform-gpu backface-hidden"
-              loading="lazy"
+              loading="eager"
               decoding="async"
             />
           </motion.div>
@@ -540,13 +538,11 @@ export default function Wholesale() {
 
             {/* Right: Image */}
             <div className="w-full lg:w-1/2 relative min-h-[300px] sm:min-h-[400px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden group transform-gpu">
-              <motion.img 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+              <img 
                 src="/Petro.png" 
                 alt="Бензовоз МТК" 
                 className="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-[2s] ease-out rounded-[1.5rem] md:rounded-[2rem] transform-gpu backface-hidden brightness-[0.82]"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/15 transition-colors duration-700 pointer-events-none rounded-[1.5rem] md:rounded-[2rem]"></div>
