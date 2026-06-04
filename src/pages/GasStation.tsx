@@ -26,8 +26,6 @@ export default function GasStation() {
     setSubmitError('');
     setIsSubmitting(true);
     
-    const text = `Новая заявка с сайта (Страница АЗС)\nИмя: ${formData.name}\nТелефон: ${formData.phone}\nСпособ связи: ${formData.contactMethod}`;
-    
     try {
       // Send to our backend API which will handle the email message
       const response = await fetch('/api/contact', {
@@ -35,7 +33,12 @@ export default function GasStation() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ 
+          name: formData.name,
+          phone: formData.phone,
+          method: formData.contactMethod,
+          source: 'Страница АЗС'
+        }),
       });
       
       if (!response.ok) {

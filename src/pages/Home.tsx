@@ -24,7 +24,6 @@ export default function Home() {
     
     // Here you would normally send the data to a backend API
     // which would then send the WhatsApp message to +7 964 003 00 81
-    const text = `Новая заявка с сайта (Главная страница)\nИмя: ${formData.name}\nТелефон: ${formData.phone}\nСпособ связи: ${formData.method}`;
     
     try {
       // Send to our backend API which will handle the email message
@@ -33,7 +32,12 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ 
+          name: formData.name,
+          phone: formData.phone,
+          method: formData.method,
+          source: 'Главная страница'
+        }),
       });
       
       if (!response.ok) {

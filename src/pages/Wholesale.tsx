@@ -29,7 +29,7 @@ export default function Wholesale() {
     setSubmitError('');
     setIsSubmitting(true);
     
-    const text = `Новая заявка с сайта (Оптовые поставки)\nИнтересует: ${selectedProduct || 'Общий заказ'}\nИмя: ${formData.name}\nТелефон: ${formData.phone}\nСпособ связи: ${formData.contactMethod}\nНикнейм/Номер: ${formData.social || 'Не указан'}\nинтересуется: ${formData.question || 'Нет'}`;
+    const text = `Интересует: ${selectedProduct || 'Общий заказ'}\nНикнейм/Номер для связи: ${formData.social || 'Не указан'}\nДополнительно: ${formData.question || 'Нет'}`;
     
     try {
       const response = await fetch('/api/contact', {
@@ -37,7 +37,13 @@ export default function Wholesale() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ 
+          name: formData.name,
+          phone: formData.phone,
+          method: formData.contactMethod,
+          source: 'Оптовые поставки',
+          message: text
+        }),
       });
       
       if (!response.ok) {
