@@ -111,12 +111,16 @@ async function startServer() {
         // Smarter service detection and configuration
         if (lowerHost.includes('mail.ru')) {
           transportConfig = {
-            service: 'mail.ru',
+            host: 'smtp.mail.ru',
+            port: 465,
+            secure: true,
             auth: { user, pass }
           };
         } else if (lowerHost.includes('yandex')) {
           transportConfig = {
-            service: 'Yandex',
+            host: 'smtp.yandex.ru',
+            port: 465,
+            secure: true,
             auth: { user, pass }
           };
         } else if (lowerHost.includes('gmail')) {
@@ -138,7 +142,7 @@ async function startServer() {
         const transporter = nodemailer.createTransport(transportConfig);
 
         const info = await transporter.sendMail({
-          from: user, 
+          from: `"Заявка МТК" <${user}>`, 
           to: recipient,
           replyTo: user,
           subject: 'Новая заявка: Сайт МТК',
@@ -154,9 +158,13 @@ async function startServer() {
         });
       } catch (mailErr) {
         console.error("Failed to send Email:", mailErr);
+        let errorMsg = mailErr instanceof Error ? mailErr.message : String(mailErr);
+        if (errorMsg.includes('Invalid login') && lowerHost.includes('yandex')) {
+          errorMsg = "Ошибка авторизации Yandex: убедитесь, что вы используете «Пароль приложения», а не обычный пароль от почты.";
+        }
         return res.status(500).json({ 
           error: "Failed to send email", 
-          details: mailErr instanceof Error ? mailErr.message : String(mailErr) 
+          details: errorMsg 
         });
       }
     } catch (error) {
