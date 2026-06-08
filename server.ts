@@ -1,5 +1,4 @@
 import express from "express";
-import { createServer as createViteServer } from "vite";
 import nodemailer from "nodemailer";
 import path from "path";
 
@@ -89,6 +88,7 @@ async function startServer() {
       const user = (process.env.SMTP_USER || '').trim();
       const pass = (process.env.SMTP_PASS || '').trim();
       const recipient = (process.env.RECIPIENT_EMAIL || '').trim();
+      const lowerHost = host.toLowerCase();
 
       if (!host || !user || !pass || !recipient) {
         console.error("Missing SMTP configuration:", { host: !!host, user: !!user, pass: !!pass, recipient: !!recipient });
@@ -105,8 +105,6 @@ async function startServer() {
           greetingTimeout: 15000,
           socketTimeout: 15000,
         };
-
-        const lowerHost = host.toLowerCase();
         
         // Smarter service detection and configuration
         if (lowerHost.includes('mail.ru')) {
@@ -142,9 +140,8 @@ async function startServer() {
         const transporter = nodemailer.createTransport(transportConfig);
 
         const info = await transporter.sendMail({
-          from: `"Заявка МТК" <${user}>`, 
+          from: `"Сайт МТК" <${user}>`, 
           to: recipient,
-          replyTo: user,
           subject: 'Новая заявка: Сайт МТК',
           text: message || `Заявка от ${name}. Телефон: ${phone}. Источник: ${source}`,
           html: htmlContent
@@ -175,6 +172,7 @@ async function startServer() {
 
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
